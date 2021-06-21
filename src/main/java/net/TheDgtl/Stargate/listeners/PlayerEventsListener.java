@@ -127,7 +127,8 @@ public class PlayerEventsListener extends StargateListener {
                     success = stargate.chargePlayer(player, portal.getOwnerName(), cost);
                 }
             } else {
-                success = stargate.chargePlayer(player, cost);
+                //noinspection deprecation
+                success = stargate.chargePlayer(player,"tax", cost);
             }
             if (!success) {
                 // Insufficient Funds
