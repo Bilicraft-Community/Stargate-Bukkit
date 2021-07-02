@@ -28,7 +28,7 @@ public class PlayerEventsListener extends StargateListener {
     public PlayerEventsListener(@NotNull Stargate stargate) {
         super(stargate);
         //Var used for temp workaround for a spigot bug.
-        this.antiDoubleActivate = false;
+        antiDoubleActivate = false;
     }
     
     @EventHandler
@@ -41,7 +41,7 @@ public class PlayerEventsListener extends StargateListener {
 
         Portal portal = Portal.getBungeeGate(destination);
         if (portal == null) {
-            stargate.debug("PlayerJoin", "Error fetching destination portal: " + destination);
+            Stargate.debug("PlayerJoin", "Error fetching destination portal: " + destination);
             return;
         }
         portal.teleport(player, portal, null);

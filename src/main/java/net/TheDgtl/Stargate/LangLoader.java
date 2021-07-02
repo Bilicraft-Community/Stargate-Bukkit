@@ -98,7 +98,7 @@ public class LangLoader {
      * This could in essence be replaced by creating a new lang.txt file from
      * resources if not exists (one line of code). 
      * 
-     * @param lang
+     * @param language
      */
     private void updateLanguage(String language) {
         ArrayList<String> keyList = new ArrayList<>();
@@ -223,12 +223,12 @@ public class LangLoader {
     public void debug() {
         Set<String> keys = strList.keySet();
         for (String key : keys) {
-            stargate.debug("LangLoader::Debug::strList", key + " => " + strList.get(key));
+            Stargate.debug("LangLoader::Debug::strList", key + " => " + strList.get(key));
         }
         if (defList == null) return;
         keys = defList.keySet();
         for (String key : keys) {
-            stargate.debug("LangLoader::Debug::defList", key + " => " + defList.get(key));
+            Stargate.debug("LangLoader::Debug::defList", key + " => " + defList.get(key));
         }
     }
     /**

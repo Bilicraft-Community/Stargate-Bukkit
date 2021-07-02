@@ -241,7 +241,7 @@ public class Gate {
 						type = Material.AIR;
 
 					if (type != portalBlockClosed && type != portalBlockOpen) {
-						stargate.debug("Gate::Matches", "Entrance/Exit Material Mismatch: " + type);
+						Stargate.debug("Gate::Matches", "Entrance/Exit Material Mismatch: " + type);
 						return false;
 					}
 
@@ -276,7 +276,7 @@ public class Gate {
 				}
 
 				if (!matches) {
-					stargate.debug("Gate::Matches", "Block Type Mismatch: "
+					Stargate.debug("Gate::Matches", "Block Type Mismatch: "
 							+ topleft.modRelative(x, y, 0, modX, 1, modZ).getType() + " != " + id);
 					return false;
 				}
@@ -428,6 +428,7 @@ public class Gate {
 		}
 
 		// Merge frame types, add open mat to list
+		// TODO: We really need this? Pending for removal because frameTypes never updated.
 		frameBlocks.addAll(frameTypes);
 
 		// gate.save(file.getParent() + "/"); // Updates format for version changes

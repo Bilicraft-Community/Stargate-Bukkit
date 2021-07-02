@@ -24,7 +24,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.UUID;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -181,34 +180,13 @@ public class Stargate extends JavaPlugin {
         int pluginId = 10451;
         Metrics metrics = new Metrics(this, pluginId);
 
-        metrics.addCustomChart(new SimplePie("language", new Callable<String>() {
-        	@Override
-        	public String call() {
-        		return getConfig().getString("lang");
-        	}
-        }));
+        metrics.addCustomChart(new SimplePie("language", () -> getConfig().getString("lang")));
 
-        metrics.addCustomChart(new SimplePie("gateformats",new Callable<String>() {
-        	@Override
-        	public String call() {
-        		return String.valueOf(Gate.getGateCount());
-        	}
-        }));
+        metrics.addCustomChart(new SimplePie("gateformats", () -> String.valueOf(Gate.getGateCount())));
 
-        metrics.addCustomChart(new SingleLineChart("gatesv3", new Callable<Integer>() {
-			@Override
-			public Integer call() throws Exception {
-				return Portal.portalCount();
-			}
-        	
-        }));
+        metrics.addCustomChart(new SingleLineChart("gatesv3", Portal::portalCount));
 
-        metrics.addCustomChart(new SimplePie("flags",new Callable<String>() {
-        	@Override
-        	public String call() {
-        		return Portal.UsedFlags.returnString();
-        	}
-        }));
+        metrics.addCustomChart(new SimplePie("flags", Portal.UsedFlags::returnString));
     }
     
     public void loadConfig() {
